@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  EXCHANGE_RATE_API: 'https://v6.exchangerate-api.com/v6/cc619498d0bea70be58d06ab/latest/USD?conversion_rates',
 };
 
 /*
