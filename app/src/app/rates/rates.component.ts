@@ -1,9 +1,9 @@
-import { loadRates } from './store/rates.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Rates } from '../models/rates.model';
+import { Rate } from '../models/rates.model';
 import { AppState } from './../store/app.state';
+import { loadRates } from './store/rates.actions';
 import { getRates } from './store/rates.selectors';
 
 @Component({
@@ -12,8 +12,8 @@ import { getRates } from './store/rates.selectors';
   styleUrls: ['./rates.component.scss']
 })
 export class RatesComponent implements OnInit {
-  rates: Observable<Rates>;
-
+  rates: Observable<Rate[]>;
+  
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { RatesService } from '../../services/rates.service';
 import { loadRates, loadRatesError, loadRatesSuccess } from './rates.actions';
@@ -18,14 +18,13 @@ export class RatesEffects {
         ofType(loadRates),
         mergeMap((action) => {
           return this.ratesService.getRates().pipe(
-            map((data) => {
-              const result = { ...data }
-              console.log(result['conversion_rates'])
-            })
+            map((rates) => {
+              return loadRatesSuccess({ rates })
+            }),
+            catchError(() => of(loadRatesError()))
           )
         })
       )
-    }, 
-    { dispatch: false },
+    }
   );
 }

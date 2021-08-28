@@ -1,9 +1,9 @@
-import { Rates } from "../../models/rates.model";
+import { Rate } from "../../models/rates.model";
 
 export interface RatesState {
-  rates: Rates;
+  rates: Rate[];
 }
 
 export const initialState: RatesState = {
-  rates: null,
+  rates: [],
 }

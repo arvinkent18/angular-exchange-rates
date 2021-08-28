@@ -1,4 +1,4 @@
-export interface Rates {
+export interface Rate {
   currency: string,
   value: number
 }

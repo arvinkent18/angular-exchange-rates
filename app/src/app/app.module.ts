@@ -9,13 +9,11 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
-import { RatesComponent } from './rates/rates.component';
 import { RatesEffects } from './rates/store/rates.effects';
 import { appReducer } from './store/app.reducer';
 @NgModule({
   declarations: [
     AppComponent,
-    RatesComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +21,8 @@ import { appReducer } from './store/app.reducer';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    EffectsModule.forRoot([RatesEffects]),
     StoreModule.forRoot(appReducer),
+    EffectsModule.forRoot([RatesEffects]),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
     })

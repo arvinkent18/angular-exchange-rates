@@ -2,7 +2,8 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Rates } from '../models/rates.model';
+import { Rate } from '../models/rates.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,18 +16,15 @@ export class RatesService {
    * 
    * @returns 
    */
-  getRates() {
+  getRates(): Observable<Rate[]> {
     return this.http
       .get(environment.EXCHANGE_RATE_API)
       .pipe(map((data) => {
-        const rates: Rates[] = [];
-        const result = { ...data };
+        const rates: Rate[] = [];
 
-        for (let key in result['conversion_rates']) {
-          rates.push({ currency: key, value: result['conversion_rates'][key] })
+        for (const [key, value] of Object.entries(data['conversion_rates'])) {
+          rates.push({ ...data[key], currency: key, value })
         }
-
-        console.log(rates);
 
         return rates;
       }))

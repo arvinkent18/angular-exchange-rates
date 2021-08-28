@@ -1,7 +1,12 @@
-<table>
+<table *ngIf="rates | async as ratesData">
+  <thead>
+    <th>Currency</th>
+    <th>Value</th>
+  </thead>
   <tbody>
-    <tr *ngFor="let rate of rates | async">
-      <td>{{ rate.userId }}</td>
+    <tr *ngFor="let rate of ratesData">
+      <td>{{ rate.currency }}</td>
+      <td>{{ rate.value }}</td>
     </tr>
   </tbody>
 </table>
