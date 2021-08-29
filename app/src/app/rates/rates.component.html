@@ -1,12 +1,18 @@
-<table *ngIf="rates | async as ratesData">
-  <thead>
-    <th>Currency</th>
-    <th>Value</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let rate of ratesData">
-      <td>{{ rate.currency }}</td>
-      <td>{{ rate.value }}</td>
-    </tr>
-  </tbody>
-</table>
+<mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="currency">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Currency</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.currency }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Value</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.value }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="15" [pageSizeOptions]="[1, 5, 10, 20]">
+</mat-paginator>

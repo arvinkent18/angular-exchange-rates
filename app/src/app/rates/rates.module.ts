@@ -1,3 +1,4 @@
+import { MaterialModule } from './../material.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,7 +15,9 @@ import { RATE_STATE_NAME } from './store/rates.selectors';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     RatesRoutingModule,
+    StoreModule.forFeature('rates', ratesReducer),
   ]
 })
 export class RatesModule { }

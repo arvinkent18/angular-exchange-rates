@@ -21,7 +21,7 @@ import { appReducer } from './store/app.reducer';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     EffectsModule.forRoot([RatesEffects]),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,

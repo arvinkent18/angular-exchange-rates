@@ -18,8 +18,8 @@ export class RatesEffects {
         ofType(loadRates),
         mergeMap((action) => {
           return this.ratesService.getRates().pipe(
-            map((rates) => {
-              return loadRatesSuccess({ rates })
+            map((data) => {
+              return loadRatesSuccess({ rates: data })
             }),
             catchError(() => of(loadRatesError()))
           )

@@ -5,6 +5,4 @@ export const RATE_STATE_NAME = 'rates';
 
 const getRatesState = createFeatureSelector<RatesState>('rates');
 
-export const getRates = createSelector(getRatesState, (state) => {
-  return state.rates;
-});
+export const getRates = createSelector(getRatesState, (state: RatesState) => state.rates);

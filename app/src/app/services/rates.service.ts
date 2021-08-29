@@ -16,7 +16,7 @@ export class RatesService {
    * 
    * @returns 
    */
-  getRates(): Observable<Rate[]> {
+  getRates() {
     return this.http
       .get(environment.EXCHANGE_RATE_API)
       .pipe(map((data) => {
