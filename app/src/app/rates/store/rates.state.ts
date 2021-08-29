@@ -1,4 +1,4 @@
-import { Rate } from "../../models/rates.model";
+import { Rate } from "../rates.model";
 
 export interface RatesState {
   rates: Rate[];

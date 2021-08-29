@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { RatesService } from '../../services/rates.service';
+import { RatesService } from '../rates.service';
+import { Rate } from '../rates.model';
 import { loadRates, loadRatesError, loadRatesSuccess } from './rates.actions';
 
 @Injectable()
@@ -18,8 +19,8 @@ export class RatesEffects {
         ofType(loadRates),
         mergeMap((action) => {
           return this.ratesService.getRates().pipe(
-            map((data) => {
-              return loadRatesSuccess({ rates: data })
+            map((rates: Rate[]) => {
+              return loadRatesSuccess({ rates })
             }),
             catchError(() => of(loadRatesError()))
           )

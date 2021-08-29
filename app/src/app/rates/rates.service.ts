@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Rate } from '../models/rates.model';
+import { Rate } from './rates.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { Rate } from '../models/rates.model';
+import { Rate } from './rates.model';
 import { loadRates } from './store/rates.actions';
 import { getRates } from './store/rates.selectors';
 import { RatesState } from './store/rates.state';
